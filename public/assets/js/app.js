@@ -662,7 +662,7 @@ const Perfil = (updated) => {
     const row = $('<div class="row bg_green_ligth"></div>');
     const divTitle = $('<div class="center-align col s12 recicla"><h5>Perfil</h5></div>');
     const container = $('<div class="center-align col s12 cont_optciones"></div>');
-    const btnReturn = $('<div class="flex"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
+    const btnReturn = $('<div class="col s3"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
     const btnSave = $('<div class="flex"><a class="waves-effect waves-light btn-large actions">Guardar</a></div>');
     const form  = $('<form action="#" class="col s12"></form>)');
     const int_1 = $('<div class="input-field col s10"></div>');
@@ -684,7 +684,7 @@ const Perfil = (updated) => {
         const p = $('<p></p>');
         const label = $('<label></label>');
         const status = state.chasqui.perfil.status;
-        const input = $('<input class="with-gap" name="group1" type="radio" />');
+        const input = $('<input class="with-gap test" name="group1" type="radio" />');
         if (item == state) {
             input.attr("checked", true);
         }

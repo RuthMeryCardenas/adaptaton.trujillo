@@ -9,11 +9,17 @@
   font-style: normal;
 }
 
+.test {
+  position: relative !important;
+  opacity: 100% !important;
+}
+
 [type="radio"]:not(:checked) {
   position: relative !important;
   opacity: 100% !important;
   pointer-events: none;
 }
+
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
