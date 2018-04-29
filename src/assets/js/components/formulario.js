@@ -1,5 +1,5 @@
 'use strict';
-const FormAcopio = (update) => {
+const FormReport = (update) => {
   
   const cont_form =$('<section class="cont"></section>');
   const row_1 =$('<div class="row"></div>');

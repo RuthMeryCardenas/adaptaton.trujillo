@@ -24,13 +24,13 @@ const render = (root) => {
             wrapper.append(addNewUser(updated));
             break;
         case 5:
-            wrapper.append(FormAcopio(updated));
+            wrapper.append(FormReport(updated));
             break;
         case 6:
-            wrapper.append(SuccesAcopio(updated));
+            wrapper.append(Message(updated));
             break;
         case 7:
-            wrapper.append(TipsR(updated));
+            wrapper.append(Perfil(updated));
             break;
         case 8:
             wrapper.append(TipDetail(updated));

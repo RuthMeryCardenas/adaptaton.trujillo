@@ -36,7 +36,6 @@ const Login = (updated) => {
         if (findUser(user).length > 0) {
           state.user = findUser(user)[0];
           state.pagina = 1;
-          console.log("Usuario registrado");
           console.log(state.user);
         } else {
           console.log("Usuario no registrado");

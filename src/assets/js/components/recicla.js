@@ -29,8 +29,7 @@ const Recicla = (updated) => {
             e.preventDefault();
             state.family = $(e.currentTarget).data("id").toLowerCase();
             state.locations = filterByMaterial(state.family);
-            console.log(state.locations);
-            state.pagina = 2;
+            state.pagina = 3;
             updated();
         });
     });
@@ -39,7 +38,7 @@ const Recicla = (updated) => {
 
     btnReturn.on("click", (e) => {
         e.preventDefault();
-        state.pagina = null;
+        state.pagina = 1;
         state.material = null;
         state.locations = null;
         updated();

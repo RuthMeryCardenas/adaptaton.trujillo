@@ -24,13 +24,13 @@ const render = (root) => {
             wrapper.append(addNewUser(updated));
             break;
         case 5:
-            wrapper.append(FormAcopio(updated));
+            wrapper.append(FormReport(updated));
             break;
         case 6:
-            wrapper.append(SuccesAcopio(updated));
+            wrapper.append(Message(updated));
             break;
         case 7:
-            wrapper.append(TipsR(updated));
+            wrapper.append(Perfil(updated));
             break;
         case 8:
             wrapper.append(TipDetail(updated));
@@ -87,6 +87,38 @@ $(_ => {
     });
 });
 
+"use strict";
+
+const store = {
+  usuarios: [
+    {
+       dni: "48080711",
+       nombre: "Ruth Mery Cardenas Perez",
+       celular: "931458353",
+     },
+     {
+        dni: "47306063",
+        nombre: "Maricarmen Rojas Tinco",
+        celular: "966352547",
+      },
+    ],
+
+}
+
+const filterByMaterial = (key) => {
+  console.log('state.chasqui.family--->', state.chasqui.family.family);
+    return state.chasqui.family.family.filter( (item) => {
+                console.log('item-->' , item);
+                return item.kin.toLowerCase() == key;
+            });
+}
+
+const findUser = (dni) => {
+    return store.usuarios.filter(user => {
+                return user.dni == dni;
+            });
+}
+
 'use strict';
 
 const addNewUser = (update) => {
@@ -138,13 +170,13 @@ int_s1.append(int_s11, int_s12, int_s13, int_s14);
         kin: 'Amiga'
     });
 
-    state.pagina = 5;
+    state.pagina = 6;
     update();
   });
 
   btnReturn.on("click", (e) => {
     e.preventDefault();
-    state.pagina = null;
+    state.pagina = 2;
 
     updated();
   });
@@ -152,7 +184,6 @@ int_s1.append(int_s11, int_s12, int_s13, int_s14);
 
   return cont_form;
 };
-
 "use strict";
 
 const TipDetail = (updated) => {
@@ -194,7 +225,7 @@ const detalle = (tip) => {
 }
 
 'use strict';
-const FormAcopio = (update) => {
+const FormReport = (update) => {
   
   const cont_form =$('<section class="cont"></section>');
   const row_1 =$('<div class="row"></div>');
@@ -421,13 +452,16 @@ function initMap () {
                 icon: image
             });
 
-            if(state.pagina == 1 ){
+            if(state.pagina == 2 ){
                 var markers = state.locations.family.map(function (location) {
                     var contentString = '<div id = "content"><p>'+location.kin+'</p><p> Esta '+location.status+'</p></div>';
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
                     });
-
+                    
+                    if( (location.latitud && location.longitud) == null){
+                        return console.log(' No se encontro la ubicación de ' + location.kin)
+                    }
                     const newMarker = new google.maps.Marker({
                         position: {lat: location.latitud, lng: location.longitud},
                         map:map,
@@ -544,7 +578,6 @@ const Login = (updated) => {
         if (findUser(user).length > 0) {
           state.user = findUser(user)[0];
           state.pagina = 1;
-          console.log("Usuario registrado");
           console.log(state.user);
         } else {
           console.log("Usuario no registrado");
@@ -613,8 +646,7 @@ const Recicla = (updated) => {
             e.preventDefault();
             state.family = $(e.currentTarget).data("id").toLowerCase();
             state.locations = filterByMaterial(state.family);
-            console.log(state.locations);
-            state.pagina = 2;
+            state.pagina = 3;
             updated();
         });
     });
@@ -623,7 +655,7 @@ const Recicla = (updated) => {
 
     btnReturn.on("click", (e) => {
         e.preventDefault();
-        state.pagina = null;
+        state.pagina = 1;
         state.material = null;
         state.locations = null;
         updated();
@@ -673,7 +705,7 @@ const RutaRecicla = (updated) => {
 
 'use strict';
 
-const SuccesAcopio = (update) => {
+const Message = (update) => {
 
   const divCont_end = $('<div class="text-center"></div>');
     const row1      = $('<div class="row"></div>');
@@ -685,13 +717,13 @@ const SuccesAcopio = (update) => {
     divCont_end.append(row1) ;
 
     setTimeout(function(){
-      state.pagina=null;
+      state.pagina = 1;
       update();}, 5000);
 
   return divCont_end;
 }
 
-const TipsR = (updated) => {
+const Perfil = (updated) => {
 
     const tiposT = [ { name: "Plastico", img: "icon-bowling-pins" },
                     { name: "Vidrio", img: "icon-wine" },
@@ -743,35 +775,3 @@ const TipsR = (updated) => {
     return parent;
 }
 
-
-"use strict";
-
-const store = {
-  usuarios: [
-    {
-       dni: "48080711",
-       nombre: "Ruth Mery Cardenas Perez",
-       celular: "931458353",
-     },
-     {
-        dni: "47306063",
-        nombre: "Maricarmen Rojas Tinco",
-        celular: "966352547",
-      },
-    ],
-
-}
-
-const filterByMaterial = (key) => {
-  console.log('state.chasqui.family--->', state.chasqui.family.family);
-    return state.chasqui.family.family.filter( (item) => {
-                console.log('item-->' , item);
-                return item.kin.toLowerCase() == key;
-            });
-}
-
-const findUser = (dni) => {
-    return store.usuarios.filter(user => {
-                return user.dni == dni;
-            });
-}

@@ -49,13 +49,13 @@ int_s1.append(int_s11, int_s12, int_s13, int_s14);
         kin: 'Amiga'
     });
 
-    state.pagina = 5;
+    state.pagina = 6;
     update();
   });
 
   btnReturn.on("click", (e) => {
     e.preventDefault();
-    state.pagina = null;
+    state.pagina = 2;
 
     updated();
   });

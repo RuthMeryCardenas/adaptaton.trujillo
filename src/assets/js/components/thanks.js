@@ -1,6 +1,6 @@
 'use strict';
 
-const SuccesAcopio = (update) => {
+const Message = (update) => {
 
   const divCont_end = $('<div class="text-center"></div>');
     const row1      = $('<div class="row"></div>');
@@ -12,7 +12,7 @@ const SuccesAcopio = (update) => {
     divCont_end.append(row1) ;
 
     setTimeout(function(){
-      state.pagina=null;
+      state.pagina = 1;
       update();}, 5000);
 
   return divCont_end;

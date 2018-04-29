@@ -28,13 +28,16 @@ function initMap () {
                 icon: image
             });
 
-            if(state.pagina == 1 ){
+            if(state.pagina == 2 ){
                 var markers = state.locations.family.map(function (location) {
                     var contentString = '<div id = "content"><p>'+location.kin+'</p><p> Esta '+location.status+'</p></div>';
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
                     });
-
+                    
+                    if( (location.latitud && location.longitud) == null){
+                        return console.log(' No se encontro la ubicación de ' + location.kin)
+                    }
                     const newMarker = new google.maps.Marker({
                         position: {lat: location.latitud, lng: location.longitud},
                         map:map,

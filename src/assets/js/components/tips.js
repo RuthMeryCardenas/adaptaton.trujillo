@@ -1,4 +1,4 @@
-const TipsR = (updated) => {
+const Perfil = (updated) => {
 
     const tiposT = [ { name: "Plastico", img: "icon-bowling-pins" },
                     { name: "Vidrio", img: "icon-wine" },
