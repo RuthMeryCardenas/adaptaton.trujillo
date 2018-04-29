@@ -590,22 +590,22 @@ const Login = (updated) => {
 "use strict";
 
 const MapaRecicla = (updated) => {
-  const tipos = [ { name: "Mamá", img: "icon-bowling-pins" },
-                  { name: "Papá", img: "icon-wine" },
-                  { name: "Hermana", img: "icon-megaphone" },
-                  { name: "Hijx", img: "icon-caution" },
-                  { name: "Amigx", img: "icon-box2" }];
+  const tipos = [ { name: "Mamá", img: "person_pin", color: "green" },
+                  { name: "Papá", img: "person_pin", color: "green" },
+                  { name: "Hermana", img: "person_pin", color: "green" },
+                  { name: "Hijx", img: "person_pin", color: "green"},
+                  { name: "Amigx", img: "person_pin", color: "green" }];
 
-    const parent = $('<div></div>');
-    const row = $('<div class="row bg_green_ligth"></div>');
+    const parent = $('<div class="familiares"></div>');
+    const row = $('<div class="familia row"></div>');
     const mapa = $('<div id="mapa" class="row"></div>');
 
-    const btnReturn = $('<div class = "col s5 push-s3"><a class="waves-effect waves-light btn-large">Volver</a></div>');
-    const btnAdd = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large actions">+</a></div>');
+    const btnReturn = $('<div class="white col s3"><a class="waves-effect waves-light btn-large grey darken-2"><i class="material-icons">arrow_back</i></a></div>');
+    const btnAdd = $('<div class="col s3"><a class="waves-effect waves-light btn-large grey darken-2">+</a></div>');
 
     tipos.forEach(function(type){
         const divContent = $('<div class="center-align col s4" data-id = "'+ type.name + '"></div>');
-        const img = $('<a class="waves-effect waves-light btn"><i class="'+ type.img+'"></i></a>');
+        const img = $('<a class="options waves-effect waves-light btn red"><i class="material-icons">'+ type.img+'</i></a>');
         const h5 = $('<h6 class="morado">'+ type.name + '</h6>');
 
         divContent.append(img);
@@ -627,7 +627,7 @@ const MapaRecicla = (updated) => {
 
     btnReturn.on("click", (e) => {
         e.preventDefault();
-        state.pagina = state.pagina-1;
+        state.pagina = state.pagina - 1;
         state.material = null;
         state.locations = null;
         updated();
@@ -638,7 +638,7 @@ const MapaRecicla = (updated) => {
         updated();
     });
 
-    parent.append(btnReturn, btnAdd);
+    parent.append(btnReturn);
 
     return parent;
 }
@@ -648,13 +648,13 @@ const MapaRecicla = (updated) => {
 const Recicla = (updated) => {
     const parent = $('<div class="home container"></div>');
     const mapa = $('<div id="mapa" class="col s12"></div>');
-    const btnReturn = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large grey darken-2 actions"><i class="material-icons">arrow_back</i></a></div>');
+    const btnReturn = $('<div class="white col s3"><a class="waves-effect waves-light btn-large red"><i class="material-icons">arrow_back</i></a></div>');
 
     state.locations = state.chasqui.family;
 
     btnReturn.on("click", (e) => {
         e.preventDefault();
-        state.pagina = 1
+        state.pagina = state.pagina - 1;
         state.material = null;
         state.locations = null;
         updated();
@@ -669,21 +669,21 @@ const Recicla = (updated) => {
 "use strict";
 
 const RutaRecicla = (updated) => {
-  const tipos = [ { name: "Mamá", img: "icon-bowling-pins" },
-                  { name: "Papá", img: "icon-wine" },
-                  { name: "Hermana", img: "icon-megaphone" },
-                  { name: "Hijx", img: "icon-caution" },
-                  { name: "Amigx", img: "icon-box2" }];
+  const tipos = [ { name: "Mamá", img: "person_pin", color: "green" },
+                  { name: "Papá", img: "person_pin", color: "green" },
+                  { name: "Hermana", img: "person_pin", color: "green" },
+                  { name: "Hijx", img: "person_pin", color: "green"},
+                  { name: "Amigx", img: "person_pin", color: "green" }];
 
-    const parent = $('<div class=""></div>');
-    const row = $('<div class="row bg_green_ligth"></div>');
+    const parent = $('<div class="familiares"></div>');
+    const row = $('<div class="familia row"></div>');
     const mapa = $('<div id="mapa"></div>');
     const detail = $('<div class=""></div>');
-    const btnReturn = $('<div class="back flex"><a class="waves-effect waves-light btn-large">Volver</a></div>');
+    const btnReturn = $('<div class="white col s3"><a class="waves-effect waves-light btn-large grey darken-2"><i class="material-icons">arrow_back</i></a></div>');
 
     tipos.forEach(function(type){
         const divContent = $('<div class="center-align col s4" data-id = "'+ type.name + '"></div>');
-        const img = $('<a class="waves-effect waves-light btn"><i class="'+ type.img+'"></i></a>');
+        const img = $('<a class="options waves-effect waves-light btn grey darken-1"><i class="material-icons">'+ type.img+'</i></a>');
         const h5 = $('<h6 class="morado">'+ type.name + '</h6>');
 
         divContent.append(img);

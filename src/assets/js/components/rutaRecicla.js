@@ -1,21 +1,21 @@
 "use strict";
 
 const RutaRecicla = (updated) => {
-  const tipos = [ { name: "Mamá", img: "icon-bowling-pins" },
-                  { name: "Papá", img: "icon-wine" },
-                  { name: "Hermana", img: "icon-megaphone" },
-                  { name: "Hijx", img: "icon-caution" },
-                  { name: "Amigx", img: "icon-box2" }];
+  const tipos = [ { name: "Mamá", img: "person_pin", color: "green" },
+                  { name: "Papá", img: "person_pin", color: "green" },
+                  { name: "Hermana", img: "person_pin", color: "green" },
+                  { name: "Hijx", img: "person_pin", color: "green"},
+                  { name: "Amigx", img: "person_pin", color: "green" }];
 
-    const parent = $('<div class=""></div>');
-    const row = $('<div class="row bg_green_ligth"></div>');
+    const parent = $('<div class="familiares"></div>');
+    const row = $('<div class="familia row"></div>');
     const mapa = $('<div id="mapa"></div>');
     const detail = $('<div class=""></div>');
-    const btnReturn = $('<div class="back flex"><a class="waves-effect waves-light btn-large">Volver</a></div>');
+    const btnReturn = $('<div class="white col s3"><a class="waves-effect waves-light btn-large grey darken-2"><i class="material-icons">arrow_back</i></a></div>');
 
     tipos.forEach(function(type){
         const divContent = $('<div class="center-align col s4" data-id = "'+ type.name + '"></div>');
-        const img = $('<a class="waves-effect waves-light btn"><i class="'+ type.img+'"></i></a>');
+        const img = $('<a class="options waves-effect waves-light btn grey darken-1"><i class="material-icons">'+ type.img+'</i></a>');
         const h5 = $('<h6 class="morado">'+ type.name + '</h6>');
 
         divContent.append(img);
