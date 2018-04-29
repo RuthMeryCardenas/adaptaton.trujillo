@@ -89,7 +89,6 @@ const int_s3 =$('<div class="input-field col s12">'+
     updated();
   });
 
-
   return cont_form;
 };
 function timepicker () {
