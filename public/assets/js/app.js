@@ -343,10 +343,10 @@ const Item = (item, icon, content) => {
 }
 
 const NavbarDesktop = () => {
-  const nav = $('<nav></nav>');
+  const nav = $('<nav class="white"></nav>');
   const nav_wrapper = $('<div class="nav-wrapper"></div>');
   const logo = $('<a href="#" class="brand-logo">Logo</a>');
-  const menu = $('<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>');
+  const menu = $('<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons text-black">menu</i></a>');
   const nav_mobile = $('<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>');
   const item1 = $('<li><a href="sass.html">Familiares</a></li>');
   const item2 = $('<li><a href="badges.html">Mi estado</a></li>');
@@ -646,9 +646,9 @@ const MapaRecicla = (updated) => {
 "use strict";
 
 const Recicla = (updated) => {
-    const parent = $('<div class="container"></div>');
+    const parent = $('<div class="home container"></div>');
     const mapa = $('<div id="mapa" class="col s12"></div>');
-    const btnReturn = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
+    const btnReturn = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large grey darken-2 actions"><i class="material-icons">arrow_back</i></a></div>');
 
     state.locations = state.chasqui.family;
 
