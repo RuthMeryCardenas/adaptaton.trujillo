@@ -19,7 +19,8 @@ Aylludanos es una aplicación que ayuda a pobladores en casos de desastres natur
 Aylludanos nace gracias una necesidad detectada por los pobladores de El Porvenir (Trujillo, La Liberdad), gravemente afectados por el último huayco sucedido en marzo de 2017  
 
 ## ¿Cómo se empezó este proyecto?
- Primero se realizó un acercamiento al problema planteado meadiante una **lluvia de ideas** realizada por todos los integrantes el equipo [Ver aquí](https://realtimeboard.com/app/board/o9J_kz6g-dw=/l)
+ Primero se realizó un acercamiento al problema planteado meadiante una **lluvia de ideas** realizada por todos los integrantes el equipo [Ver aquí](https://realtimeboard.com/app/board/o9J_kz6g-dw=/l).
+
 ## Benchmark
 
  ![foto1](docs/Benchmark.png)
@@ -53,3 +54,5 @@ Se realizó un lista de los funciones principales de nuestra aplicación :
 
 ![foto1](docs/proto1.png)
 ![foto1](docs/proto2.png)
+
+[Ver aquí](https://app.atomic.io/d/t044xZzDo5Gn).
