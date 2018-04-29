@@ -37,10 +37,10 @@ const Item = (item, icon, content) => {
 }
 
 const NavbarDesktop = () => {
-  const nav = $('<nav></nav>');
+  const nav = $('<nav class="white"></nav>');
   const nav_wrapper = $('<div class="nav-wrapper"></div>');
   const logo = $('<a href="#" class="brand-logo">Logo</a>');
-  const menu = $('<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>');
+  const menu = $('<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons text-black">menu</i></a>');
   const nav_mobile = $('<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>');
   const item1 = $('<li><a href="sass.html">Familiares</a></li>');
   const item2 = $('<li><a href="badges.html">Mi estado</a></li>');
