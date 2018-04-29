@@ -17,26 +17,28 @@ function initMap () {
             };
 
             const map = new google.maps.Map(document.getElementById("mapa"), {
-                zoom: 12,
+                zoom: 15,
                 center: pos
             });
-
+            
+            var image = 'https://wiki.waze.com/wiki/images/f/f1/LOL-female%402x.png';
             var marker = new google.maps.Marker({
                 position: pos,
-                map: map
+                map: map,
+                icon: image
             });
 
-
-            if(state.pagina == 2){
-                var markers = state.locations[0].lugares_acopio.map(function (location) {
-                    var contentString = '<div id = "content"><p>'+location.name+'</p><p>'+location.direccion+'</p><p>'+location.horario+'</p></div>';
+            if(state.pagina == 1 ){
+                var markers = state.locations.family.map(function (location) {
+                    var contentString = '<div id = "content"><p>'+location.kin+'</p><p> Esta '+location.status+'</p></div>';
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
                     });
 
                     const newMarker = new google.maps.Marker({
                         position: {lat: location.latitud, lng: location.longitud},
-                        map:map
+                        map:map,
+                        icon: location.url
                     })
                     newMarker.addListener("click", function(){
                         infowindow.open(map, newMarker);
@@ -45,9 +47,7 @@ function initMap () {
 
                     return newMarker;
                 });
-
-
-            }else {
+            }  else {
                 marker.setMap(null);
                 calculateAndDisplayRoute(pos, map);
 
@@ -70,9 +70,8 @@ function handleLocationError(browserHasGeolocation, map, pos) {
 }
 
 function calculateAndDisplayRoute(pos, map) {
-
-     const directionsDisplay = new google.maps.DirectionsRenderer;
-     const directionsService = new google.maps.DirectionsService;
+    const directionsDisplay = new google.maps.DirectionsRenderer;
+    const directionsService = new google.maps.DirectionsService;
     directionsDisplay.setMap(map);
     directionsService.route({
         origin: pos,

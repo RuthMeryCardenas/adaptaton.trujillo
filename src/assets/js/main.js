@@ -21,7 +21,7 @@ const render = (root) => {
             wrapper.append(MapaRecicla(updated));
             break;
         case 4:
-            wrapper.append(RutaRecicla(updated));
+            wrapper.append(addNewUser(updated));
             break;
         case 5:
             wrapper.append(FormAcopio(updated));
@@ -46,10 +46,10 @@ const render = (root) => {
       $('.collapsible').collapsible();
     }
 
-    if(state.pagina == 2 || state.pagina == 3 ){
-        initMap();
+    if(state.pagina == 2 ||state.pagina == 3 || state.pagina == 4 ){
+      initMap();
     }
-    if(state.pagina == 4){
+    if(state.pagina == 5){
         var input = document.getElementById("ubicacion");
         new google.maps.places.Autocomplete(input);
         timepicker();
@@ -67,19 +67,19 @@ const state = {
 
 $(_ => {
   var config = {
-    apiKey: "AIzaSyD046Ozxa4rsgWa1uTUC5lkIYJsOB6nW3c",
-    authDomain: "wallie-6af03.firebaseapp.com",
-    databaseURL: "https://wallie-6af03.firebaseio.com",
-    projectId: "wallie-6af03",
-    storageBucket: "wallie-6af03.appspot.com",
-    messagingSenderId: "846422299759"
+    apiKey: "AIzaSyANNgx5qKtM-KP93_zbvhHhp270mLK5LaU",
+    authDomain: "chasquihuayco.firebaseapp.com",
+    databaseURL: "https://chasquihuayco.firebaseio.com",
+    projectId: "chasquihuayco",
+    storageBucket: "chasquihuayco.appspot.com",
+    messagingSenderId: "26429072736"
   };
   firebase.initializeApp(config);
   var database = firebase.database();
     database.ref().on("value", function(snap){
 
-        state.wallie = snap.val();
-        console.log(state.wallie);
+        state.chasqui = snap.val();
+        console.log(state);
 
         const root = $(".root");
         render(root);

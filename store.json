@@ -1,0 +1,107 @@
+{
+	"chasquis": [{
+			"id": 47306063,
+			"name": "Maia",
+			"lastname": "Rojas Tinco",
+			"description": null,
+			"location": {
+				"latitud": "-8.1287658",
+				"longitud": "-79.0377126"
+			},
+			"type": "Estudiante"
+		},
+		{
+			"id": 30123012,
+			"name": "Mery",
+			"lastname": "Cardenas Perez",
+			"description": null,
+			"location": {
+				"latitud": "-8.1287658",
+				"longitud": "-79.0377126"
+			},
+			"type": "Estudiante"
+		},
+		{
+			"id": 12345678,
+			"name": "Pablo",
+			"lastname": "Marmol",
+			"description": null,
+			"location": {
+				"latitud": "-8.1287658",
+				"longitud": "-79.0377126"
+			},
+			"type": "Profesor"
+		},
+		{
+			"id": 47306063,
+			"name": "Pedro",
+			"lastname": "Picapiedra",
+			"description": null,
+			"location": {
+				"latitud": "-8.1287658",
+				"longitud": "-79.0377126"
+			},
+			"type": "Operario"
+		},
+		{
+			"id": 47306063,
+			"name": "Maia",
+			"lastname": "Rojas Tinco",
+			"description": null,
+			"location": {
+				"latitud": "-8.1287658",
+				"longitud": "-79.0377126"
+			},
+			"type": "Estudiante"
+		},
+		{
+			"id": 44567773,
+			"name": "Vilma",
+			"lastname": "Palma",
+			"description": null,
+			"location": {
+				"latitud": "-8.1287658",
+				"longitud": "-79.0377126"
+			},
+			"type": "Estudiante"
+		}
+	],
+	"family": {
+		"id": 43546785,
+		"name": "Rosa Martines",
+		"category": "Estudiante",
+		"latitud": -11.981258,
+		"longitud": -77.058853,
+		"family": [{
+				"id": 1,
+				"kin": "Mamá",
+				"Telefono": 966352547,
+				"status": "Bien",
+				"localitation": [{
+					"latitud": -8.1287658,
+					"longitud": -79.0377126
+				}]
+			},
+			{
+				"id": 2,
+				"kin": "Hermano",
+				"Telefono": 963452547,
+				"status": "Bien",
+				"localitation": [{
+					"latitud": -8.1287658,
+					"longitud": -79.0377126
+				}]
+			},
+			{
+				"id": 3,
+				"kin": "Papá",
+				"Telefono": 963452547,
+				"status": "Bien",
+				"localitation": [{
+					"latitud": -8.1287658,
+					"longitud": -79.0377126
+				}]
+			}
+		]
+	}
+}

@@ -1,6 +1,6 @@
 'use strict';
 const FormAcopio = (update) => {
-
+  
   const cont_form =$('<section class="cont"></section>');
   const row_1 =$('<div class="row"></div>');
   const form  =$('<form class="col s10 form_new push-s1"></div>');
