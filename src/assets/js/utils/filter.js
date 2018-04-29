@@ -1,8 +1,10 @@
 "use strict";
 
 const filterByMaterial = (key) => {
-  console.log(state.wallie.wallie);
-    return state.wallie.wallie.filter( (item) => {
-                return item.tipos.toLowerCase() == key;
+  console.log(key);
+  console.log('state.chasqui.family--->', state.chasqui.family.family);
+    return state.chasqui.family.family.filter( (item) => {
+                console.log('item-->' , item);
+                return item.kin.toLowerCase() == key;
             });
 }

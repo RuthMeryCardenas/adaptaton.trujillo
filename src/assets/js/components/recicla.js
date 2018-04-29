@@ -2,19 +2,20 @@
 
 const Recicla = (updated) => {
 
-    const tipos = [ { name: "Plastico", img: "icon-bowling-pins" },
-                    { name: "Vidrio", img: "icon-wine" },
-                    { name: "RAEE", img: "icon-megaphone" },
-                    { name: "Aceite", img: "icon-caution" },
-                    { name: "Cartón y Papel", img: "icon-box2" },
-                    { name: "Pilas", img: "icon-battery2" }];
+    const tipos = [ { name: "", img: "icon-bowling-pins" },
+                    { name: "", img: "icon-wine" },
+                    { name: "", img: "icon-megaphone" },
+                    { name: "", img: "icon-caution" },
+                    { name: "", img: "icon-box2" },
+                    { name: "", img: "icon-battery2" }];
 
     const parent = $('<div class="container"></div>');
     const row = $('<div class="row bg_green_ligth"></div>');
-    const divTitle = $('<div class="center-align col s12 recicla"><h4>Recicla</h4></div>');
+    const divTitle = $('<div class="center-align col s12 recicla"><h4>Familia</h4></div>');
     const container = $('<div class="center-align col s12 cont_optciones"></div>');
     const btnReturn = $('<div class="bg_green_ligth1 flex"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
 
+    console.log(state);
     tipos.forEach(function(type){
         const divContent = $('<div class="col s6" data-id = "'+ type.name + '"></div>');
         const img = $('<a class=""><i class="'+ type.img+'"></i></a>');
@@ -26,8 +27,9 @@ const Recicla = (updated) => {
 
         divContent.on("click", (e) => {
             e.preventDefault();
-            state.material = $(e.currentTarget).data("id").toLowerCase();
-            state.locations = filterByMaterial(state.material);
+            state.family = $(e.currentTarget).data("id").toLowerCase();
+            console.log('select-->' +state.family);
+            state.locations = filterByMaterial(state.family);
             console.log(state.locations);
             state.pagina = 2;
             updated();

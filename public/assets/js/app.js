@@ -56,19 +56,19 @@ const state = {
 
 $(_ => {
   var config = {
-    apiKey: "AIzaSyD046Ozxa4rsgWa1uTUC5lkIYJsOB6nW3c",
-    authDomain: "wallie-6af03.firebaseapp.com",
-    databaseURL: "https://wallie-6af03.firebaseio.com",
-    projectId: "wallie-6af03",
-    storageBucket: "wallie-6af03.appspot.com",
-    messagingSenderId: "846422299759"
+    apiKey: "AIzaSyANNgx5qKtM-KP93_zbvhHhp270mLK5LaU",
+    authDomain: "chasquihuayco.firebaseapp.com",
+    databaseURL: "https://chasquihuayco.firebaseio.com",
+    projectId: "chasquihuayco",
+    storageBucket: "chasquihuayco.appspot.com",
+    messagingSenderId: "26429072736"
   };
   firebase.initializeApp(config);
   var database = firebase.database();
     database.ref().on("value", function(snap){
 
-        state.wallie = snap.val();
-        console.log(state.wallie);
+        state.chasqui = snap.val();
+        console.log(state);
 
         const root = $(".root");
         render(root);
@@ -230,9 +230,9 @@ function timepicker () {
 const Home = (updated) => {
 
     const parent = $('<div class="center-align fondo"></div>');
-    const btnRecicle = $('<div class="recicla"><a class="waves-effect waves-light btn-large actions"><i class="icon-recycle"></i>Recicla</a></div><br>');
-    const btnPoint = $('<div class="recicla"><a class="waves-effect waves-light btn-large actions"><i class="icon-map-pin"></i>Cargar Nuevo Punto</a></div><br>');
-    const btnTips = $('<div class="recicla"><a class="waves-effect waves-light btn-large actions"><i class="icon-lightbulb"></i>Tips</a></div><br>');
+    const btnRecicle = $('<div class="recicla"><a class="waves-effect waves-light btn-large actions"><i class="icon-recycle"></i>Ubica a tu familiar</a></div><br>');
+    const btnPoint = $('<div class="recicla"><a class="waves-effect waves-light btn-large actions"><i class="icon-map-pin"></i>Reportar</a></div><br>');
+    const btnTips = $('<div class="recicla"><a class="waves-effect waves-light btn-large actions"><i class="icon-lightbulb"></i>Mi estado</a></div><br>');
 
     parent.append(btnRecicle);
     parent.append(btnPoint);
@@ -277,7 +277,7 @@ function initMap () {
             };
 
             const map = new google.maps.Map(document.getElementById("mapa"), {
-                zoom: 12,
+                zoom: 16,
                 center: pos
             });
 
@@ -378,7 +378,7 @@ const locationDetail = (location, updated) => {
 
 const MapaRecicla = (updated) => {
 
-    const parent = $('<div class="row"><h4>'+ state.material+'</h4></div>');
+    const parent = $('<div class="row"><h4>'+ state.family+'</h4></div>');
     const mapa = $('<div id="mapa" class="col s12"></div>');
     const detail = $('<div class="col s12"></div>');
     const btnReturn = $('<div class = "col s5 push-s3"><a class="waves-effect waves-light btn-large">Volver</a></div>');
@@ -393,9 +393,9 @@ const MapaRecicla = (updated) => {
         updated();
     });
 
-    state.locations[0].lugares_acopio.map(function (location) {
-        detail.append(locationDetail(location, updated));
-    });
+    // state.locations[0].lugares_acopio.map(function (location) {
+    //     detail.append(locationDetail(location, updated));
+    // });
 
     parent.append(detail);
     parent.append(btnReturn);
@@ -408,19 +408,20 @@ const MapaRecicla = (updated) => {
 
 const Recicla = (updated) => {
 
-    const tipos = [ { name: "Plastico", img: "icon-bowling-pins" },
-                    { name: "Vidrio", img: "icon-wine" },
-                    { name: "RAEE", img: "icon-megaphone" },
-                    { name: "Aceite", img: "icon-caution" },
-                    { name: "Cartón y Papel", img: "icon-box2" },
-                    { name: "Pilas", img: "icon-battery2" }];
+    const tipos = [ { name: "", img: "icon-bowling-pins" },
+                    { name: "", img: "icon-wine" },
+                    { name: "", img: "icon-megaphone" },
+                    { name: "", img: "icon-caution" },
+                    { name: "", img: "icon-box2" },
+                    { name: "", img: "icon-battery2" }];
 
     const parent = $('<div class="container"></div>');
     const row = $('<div class="row bg_green_ligth"></div>');
-    const divTitle = $('<div class="center-align col s12 recicla"><h4>Recicla</h4></div>');
+    const divTitle = $('<div class="center-align col s12 recicla"><h4>Familia</h4></div>');
     const container = $('<div class="center-align col s12 cont_optciones"></div>');
     const btnReturn = $('<div class="bg_green_ligth1 flex"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
 
+    console.log(state);
     tipos.forEach(function(type){
         const divContent = $('<div class="col s6" data-id = "'+ type.name + '"></div>');
         const img = $('<a class=""><i class="'+ type.img+'"></i></a>');
@@ -432,8 +433,9 @@ const Recicla = (updated) => {
 
         divContent.on("click", (e) => {
             e.preventDefault();
-            state.material = $(e.currentTarget).data("id").toLowerCase();
-            state.locations = filterByMaterial(state.material);
+            state.family = $(e.currentTarget).data("id").toLowerCase();
+            console.log('select-->' +state.family);
+            state.locations = filterByMaterial(state.family);
             console.log(state.locations);
             state.pagina = 2;
             updated();
@@ -557,8 +559,10 @@ const TipsR = (updated) => {
 "use strict";
 
 const filterByMaterial = (key) => {
-  console.log(state.wallie.wallie);
-    return state.wallie.wallie.filter( (item) => {
-                return item.tipos.toLowerCase() == key;
+  console.log(key);
+  console.log('state.chasqui.family--->', state.chasqui.family.family);
+    return state.chasqui.family.family.filter( (item) => {
+                console.log('item-->' , item);
+                return item.kin.toLowerCase() == key;
             });
 }
