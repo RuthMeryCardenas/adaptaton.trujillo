@@ -70,16 +70,16 @@
 		"id": 43546785,
 		"name": "Rosa Martines",
 		"category": "Estudiante",
-		"lat": "-11.981258",
-		"lng": "-77.058853",
+		"latitud": -11.981258,
+		"longitud": -77.058853,
 		"family": [{
 				"id": 1,
 				"kin": "Mamá",
 				"Telefono": 966352547,
 				"status": "Bien",
 				"localitation": [{
-					"latitud": "-8.1287658",
-					"longitud": "-79.0377126"
+					"latitud": -8.1287658,
+					"longitud": -79.0377126
 				}]
 			},
 			{
@@ -88,8 +88,8 @@
 				"Telefono": 963452547,
 				"status": "Bien",
 				"localitation": [{
-					"latitud": "-8.1287658",
-					"longitud": "-79.0377126"
+					"latitud": -8.1287658,
+					"longitud": -79.0377126
 				}]
 			},
 			{
@@ -98,8 +98,8 @@
 				"Telefono": 963452547,
 				"status": "Bien",
 				"localitation": [{
-					"latitud": "-8.1287658",
-					"longitud": "-79.0377126"
+					"latitud": -8.1287658,
+					"longitud": -79.0377126
 				}]
 			}
 		]

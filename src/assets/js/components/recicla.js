@@ -2,22 +2,22 @@
 
 const Recicla = (updated) => {
 
-    const tipos = [ { name: "", img: "icon-bowling-pins" },
-                    { name: "", img: "icon-wine" },
-                    { name: "", img: "icon-megaphone" },
-                    { name: "", img: "icon-caution" },
-                    { name: "", img: "icon-box2" },
-                    { name: "", img: "icon-battery2" }];
+    const tipos = [ { name: "Mamá", img: "icon-bowling-pins" },
+                    { name: "Papá", img: "icon-wine" },
+                    { name: "Hermana", img: "icon-megaphone" },
+                    { name: "Hijx", img: "icon-caution" },
+                    { name: "Amigx", img: "icon-box2" }];
 
     const parent = $('<div class="container"></div>');
     const row = $('<div class="row bg_green_ligth"></div>');
-    const divTitle = $('<div class="center-align col s12 recicla"><h4>Familia</h4></div>');
+    const btnReturn = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
+    const divTitle = $('<div class="center-align col s6 recicla"><h4>Familia</h4></div>');
+    const btnAdd = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large actions">+</a></div>');
     const container = $('<div class="center-align col s12 cont_optciones"></div>');
-    const btnReturn = $('<div class="bg_green_ligth1 flex"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
+    const mapa = $('<div id="mapa" class="col s12"></div>');
 
-    console.log(state);
     tipos.forEach(function(type){
-        const divContent = $('<div class="col s6" data-id = "'+ type.name + '"></div>');
+        const divContent = $('<div class="col s4" data-id = "'+ type.name + '"></div>');
         const img = $('<a class=""><i class="'+ type.img+'"></i></a>');
         const h5 = $('<h6 class="morado">'+ type.name + '</h6>');
 
@@ -28,13 +28,15 @@ const Recicla = (updated) => {
         divContent.on("click", (e) => {
             e.preventDefault();
             state.family = $(e.currentTarget).data("id").toLowerCase();
-            console.log('select-->' +state.family);
             state.locations = filterByMaterial(state.family);
             console.log(state.locations);
             state.pagina = 2;
             updated();
         });
     });
+
+    state.locations = state.chasqui.family;
+
     btnReturn.on("click", (e) => {
         e.preventDefault();
         state.pagina = null;
@@ -43,12 +45,19 @@ const Recicla = (updated) => {
         updated();
     });
 
-    row.append(divTitle);
+    btnAdd.on("click", (e) => {
+        e.preventDefault();
+        state.pagina = 4;
+        updated();
+    });
+    
+    parent.append(mapa);
+    row.append(btnReturn, divTitle, btnAdd);
+    
     row.append(container);
     parent.append(row);
-    parent.append(btnReturn);
-
-
+    parent.append(mapa);
+    //
     return parent;
 
 };

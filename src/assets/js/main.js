@@ -20,7 +20,7 @@ const render = (root) => {
             wrapper.append(RutaRecicla(updated));
             break;
         case 4:
-            wrapper.append(FormAcopio(updated));
+            wrapper.append(addNewUser(updated));
             break;
         case 5:
             wrapper.append(SuccesAcopio(updated));
@@ -35,7 +35,7 @@ const render = (root) => {
 
     root.append(wrapper);
 
-    if(state.pagina == 2 || state.pagina == 3 ){
+    if(state.pagina == 1 ||state.pagina == 2 || state.pagina == 3 ){
         initMap();
     }
     if(state.pagina == 4){
