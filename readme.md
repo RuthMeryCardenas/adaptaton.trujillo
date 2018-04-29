@@ -25,7 +25,7 @@ Aylludanos nace gracias una necesidad detectada por los pobladores de El Porveni
 
  ![foto1](docs/Benchmark.png)
 
-## Conociedo más sobre el usuario final
+## Conociendo más sobre el usuario final
 
 Se realizó un modelo que representa a nuestro usuario final
 ![foto1](docs/user.png)
@@ -42,7 +42,7 @@ Se realizó un lista de los funciones principales de nuestra aplicación :
  * Registro de ubicaciòn de usuarios cada 1010min
  * Registro de de fotografías tomada por usuarios a zonas afectadas
 
-## Prototipado de producto mínimo viable en baja fidelidad
+## Prototipado del producto mínimo viable en baja fidelidad
 
 ![foto1](docs/proto-.jpeg)
 
