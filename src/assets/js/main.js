@@ -24,18 +24,23 @@ const render = (root) => {
             wrapper.append(RutaRecicla(updated));
             break;
         case 4:
+            wrapper.append(Header(updated));
             wrapper.append(addNewUser(updated));
             break;
         case 5:
+            wrapper.append(Header(updated));
             wrapper.append(FormReport(updated));
             break;
         case 6:
+            wrapper.append(Header(updated));
             wrapper.append(Message(updated));
             break;
         case 7:
+            wrapper.append(Header(updated));
             wrapper.append(Perfil(updated));
             break;
         case 8:
+            wrapper.append(Header(updated));
             wrapper.append(TipDetail(updated));
             break;
     };
