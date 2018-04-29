@@ -48,8 +48,7 @@ div.recicla {
 .bg_green_ligth {
   background-color: #D1EAAF;
   border: 1px solid #D1EAAF;
-  border-radius: 16px;
-  height: 45vh; }
+  border-radius: 16px; }
 
 .flex {
   display: flex;

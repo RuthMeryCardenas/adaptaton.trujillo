@@ -45,5 +45,4 @@ const RutaRecicla = (updated) => {
     parent.append(btnReturn);
 
     return parent;
-
 }
