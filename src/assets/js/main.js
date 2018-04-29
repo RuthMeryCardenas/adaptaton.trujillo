@@ -46,14 +46,14 @@ const render = (root) => {
       $('.collapsible').collapsible();
     }
 
-    if(state.pagina == 2 ||state.pagina == 3 || state.pagina == 4 ){
+    if(state.pagina == 2 ||state.pagina == 3 || state.pagina == 4 || state.pagina == 5 || state.pagina == 7){
       initMap();
     }
-    if(state.pagina == 5){
-        var input = document.getElementById("ubicacion");
-        new google.maps.places.Autocomplete(input);
-        timepicker();
-    }
+    // if(state.pagina == 5){
+    //     var input = document.getElementById("ubicacion");
+    //     new google.maps.places.Autocomplete(input);
+    //     timepicker();
+    // }
 
 }
 
