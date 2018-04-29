@@ -8,32 +8,43 @@ const render = (root) => {
 
     switch (state.pagina) {
         case null:
-            wrapper.append(Home(updated));
+            wrapper.append(Login(updated));
             break;
         case 1:
-            wrapper.append(Recicla(updated));
+            wrapper.append(Header(updated));
+            wrapper.append(Home(updated));
             break;
         case 2:
-            wrapper.append(MapaRecicla(updated));
+            wrapper.append(Recicla(updated));
             break;
         case 3:
-            wrapper.append(RutaRecicla(updated));
+            wrapper.append(MapaRecicla(updated));
             break;
         case 4:
-            wrapper.append(FormAcopio(updated));
+            wrapper.append(RutaRecicla(updated));
             break;
         case 5:
-            wrapper.append(SuccesAcopio(updated));
+            wrapper.append(FormAcopio(updated));
             break;
         case 6:
-            wrapper.append(TipsR(updated));
+            wrapper.append(SuccesAcopio(updated));
             break;
         case 7:
+            wrapper.append(TipsR(updated));
+            break;
+        case 8:
             wrapper.append(TipDetail(updated));
             break;
     };
 
     root.append(wrapper);
+
+    if(state.pagina !=  null ){
+      $(".button-collapse").sideNav({
+        menuWidth: 250
+      });
+      $('.collapsible').collapsible();
+    }
 
     if(state.pagina == 2 || state.pagina == 3 ){
         initMap();
@@ -226,6 +237,62 @@ function timepicker () {
 
 "use strict";
 
+const Item = (item, icon, content) => {
+  const li = $('<li></li>');
+  const header = $('<div class="collapsible-header"><i class="material-icons">' + icon + '</i>' + item +'</div>');
+  const body = $('<div class="collapsible-body"><span>' + content +'</span></div>');
+
+  li.append(header);
+  li.append(body);
+
+  return li;
+}
+
+const NavbarDesktop = () => {
+  const nav = $('<nav></nav>');
+  const nav_wrapper = $('<div class="nav-wrapper"></div>');
+  const logo = $('<a href="#" class="brand-logo">Logo</a>');
+  const menu = $('<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>');
+  const nav_mobile = $('<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>');
+  const item1 = $('<li><a href="sass.html">Familiares</a></li>');
+  const item2 = $('<li><a href="badges.html">Mi estado</a></li>');
+  const item3 = $('<li><a href="collapsible.html">Reportar</a></li>');
+
+   nav_mobile.append(item1);
+   nav_mobile.append(item2);
+   nav_mobile.append(item3);
+
+   nav_wrapper.append(logo);
+   nav_wrapper.append(menu);
+   nav_wrapper.append(nav_mobile);
+   nav.append(nav_wrapper);
+
+  return nav;
+}
+
+const NavbarMobile = () => {
+  const container = $('<div id="slide-out" class="side-nav"></div>');
+  const ul = $('<ul class="collapsible" data-collapsible="accordion"></ul>');
+
+   ul.append(Item("Familiares", "people", "Lorem ipsum dolor sit amet."));
+   ul.append(Item("Mi estado", "accessibility", "Lorem ipsum dolor sit amet."));
+   ul.append(Item("Alertas", "add_alert", "Lorem ipsum dolor sit amet."));
+   container.append(ul);
+
+  return container;
+}
+
+const Header = (updated) => {
+  const header = $('<div></div>');
+
+   header.append(NavbarDesktop());
+   header.append(NavbarMobile());
+
+  return header;
+}
+
+"use strict";
+
 
 const Home = (updated) => {
 
@@ -240,17 +307,17 @@ const Home = (updated) => {
 
     btnRecicle.on("click", (e) => {
         e.preventDefault();
-        state.pagina = 1;
+        state.pagina = 2;
         updated();
     });
     btnPoint.on("click", function (e) {
         e.preventDefault();
-        state.pagina = 4;
+        state.pagina = 5;
         updated();
     });
     btnTips.on("click", function (e) {
         e.preventDefault();
-        state.pagina = 6;
+        state.pagina = 7;
         updated();
     });
 
@@ -372,6 +439,56 @@ const locationDetail = (location, updated) => {
     });
 
     return parent;
+}
+
+"use strict";
+const Input = () => {
+    const container = $('<div class="input-field"></div>');
+    const icon = $('<i class="material-icons prefix">account_circle</i>');
+    const input = $('<input id="icon_prefix" type="text" class="validate">');
+    const label = $('<label for="icon_prefix">DNI</label>');
+
+    container.append(icon);
+    container.append(input);
+    container.append(label);
+
+    return container;
+}
+
+const Login = (updated) => {
+
+    const parent = $('<div class="center-align fondo"></div>');
+    const field = $('<div class="input-field"></div>');
+    const icon = $('<i class="material-icons prefix">account_circle</i>');
+    const input = $('<input id="icon_prefix" type="text" class="validate">');
+    const label = $('<label for="icon_prefix">DNI</label>');
+
+    field.append(icon);
+    field.append(input);
+    field.append(label);
+
+    const btnSignIn = $('<div class="recicla"><a class="waves-effect waves-light btn-large actions"><i class="icon-lightbulb"></i>Ingresar</a></div><br>');
+
+    parent.append(field);
+    parent.append(btnSignIn);
+
+    btnSignIn.on("click", (e) => {
+        e.preventDefault();
+        let user = input.val();
+
+        if (findUser(user).length > 0) {
+          state.user = findUser(user)[0];
+          state.pagina = 1;
+          console.log("Usuario registrado");
+          console.log(state.user);
+        } else {
+          console.log("Usuario no registrado");
+        }
+        updated();
+    });
+
+    return parent;
+
 }
 
 "use strict";
@@ -556,9 +673,31 @@ const TipsR = (updated) => {
 
 "use strict";
 
+const store = {
+  usuarios: [
+    {
+       dni: "48080711",
+       nombre: "Ruth Mery Cardenas Perez",
+       celular: "931458353",
+     },
+     {
+        dni: "47306063",
+        nombre: "Maricarmen Rojas Tinco",
+        celular: "966352547",
+      },
+    ],
+
+}
+
 const filterByMaterial = (key) => {
   console.log(state.wallie.wallie);
-    return state.wallie.wallie.filter( (item) => {
+    return state.wallie.wallie.filter(item => {
                 return item.tipos.toLowerCase() == key;
+            });
+}
+
+const findUser = (dni) => {
+    return store.usuarios.filter(user => {
+                return user.dni == dni;
             });
 }

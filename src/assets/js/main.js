@@ -8,32 +8,43 @@ const render = (root) => {
 
     switch (state.pagina) {
         case null:
-            wrapper.append(Home(updated));
+            wrapper.append(Login(updated));
             break;
         case 1:
-            wrapper.append(Recicla(updated));
+            wrapper.append(Header(updated));
+            wrapper.append(Home(updated));
             break;
         case 2:
-            wrapper.append(MapaRecicla(updated));
+            wrapper.append(Recicla(updated));
             break;
         case 3:
-            wrapper.append(RutaRecicla(updated));
+            wrapper.append(MapaRecicla(updated));
             break;
         case 4:
-            wrapper.append(FormAcopio(updated));
+            wrapper.append(RutaRecicla(updated));
             break;
         case 5:
-            wrapper.append(SuccesAcopio(updated));
+            wrapper.append(FormAcopio(updated));
             break;
         case 6:
-            wrapper.append(TipsR(updated));
+            wrapper.append(SuccesAcopio(updated));
             break;
         case 7:
+            wrapper.append(TipsR(updated));
+            break;
+        case 8:
             wrapper.append(TipDetail(updated));
             break;
     };
 
     root.append(wrapper);
+
+    if(state.pagina !=  null ){
+      $(".button-collapse").sideNav({
+        menuWidth: 250
+      });
+      $('.collapsible').collapsible();
+    }
 
     if(state.pagina == 2 || state.pagina == 3 ){
         initMap();

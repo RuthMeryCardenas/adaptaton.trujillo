@@ -14,17 +14,17 @@ const Home = (updated) => {
 
     btnRecicle.on("click", (e) => {
         e.preventDefault();
-        state.pagina = 1;
+        state.pagina = 2;
         updated();
     });
     btnPoint.on("click", function (e) {
         e.preventDefault();
-        state.pagina = 4;
+        state.pagina = 5;
         updated();
     });
     btnTips.on("click", function (e) {
         e.preventDefault();
-        state.pagina = 6;
+        state.pagina = 7;
         updated();
     });
 
