@@ -21,6 +21,7 @@ const Login = (updated) => {
 
     field.append(icon);
     field.append(input);
+
     field.append(label);
 
     const btnSignIn = $('<div class="recicla"><a class="waves-effect waves-light red btn-large actions">Ingresar</a></div><br>');

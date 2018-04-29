@@ -15,9 +15,8 @@ function initMap () {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-
             const map = new google.maps.Map(document.getElementById("mapa"), {
-                zoom: 15,
+                zoom: 17,
                 center: pos
             });
 
@@ -25,7 +24,8 @@ function initMap () {
             var marker = new google.maps.Marker({
                 position: pos,
                 map: map,
-                icon: image
+                title: 'Click to zoom'
+                // icon: image
             });
 
             if(state.pagina == 2 ){
@@ -34,9 +34,8 @@ function initMap () {
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
                     });
-
                     if( (location.latitud && location.longitud) == null){
-                        return console.log(' No se encontro la ubicación de ' + location.kin)
+                        return console.log(' No se encontro la ubicación de ' + location.kin);
                     }
                     const newMarker = new google.maps.Marker({
                         position: {lat: location.latitud, lng: location.longitud},
@@ -51,10 +50,24 @@ function initMap () {
                     return newMarker;
                 });
             }
-            if(state.pagina == 3 ) {
+
+            if (state.pagina == 3) {
                 marker.setMap(null);
                 calculateAndDisplayRoute(pos, map);
+            }
+            if (state.pagina == 5){
+                map.addListener('center_changed', function() {
+                // 3 seconds after the center of the map has changed, pan back to the
+                // marker.
+                window.setTimeout(function() {
+                    map.panTo(marker.getPosition());
+                }, 3000);
+                });
 
+                marker.addListener('click', function() {
+                map.setZoom(8);
+                map.setCenter(marker.getPosition());
+                });
             }
         });
     } else {

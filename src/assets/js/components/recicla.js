@@ -18,5 +18,6 @@ const Recicla = (updated) => {
     parent.append(mapa);
     parent.append(btnReturn);
 
+    
     return parent;
 };

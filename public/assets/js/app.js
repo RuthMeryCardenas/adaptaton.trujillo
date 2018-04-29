@@ -24,18 +24,23 @@ const render = (root) => {
             wrapper.append(RutaRecicla(updated));
             break;
         case 4:
+            wrapper.append(Header(updated));
             wrapper.append(addNewUser(updated));
             break;
         case 5:
+            wrapper.append(Header(updated));
             wrapper.append(FormReport(updated));
             break;
         case 6:
+            wrapper.append(Header(updated));
             wrapper.append(Message(updated));
             break;
         case 7:
+            wrapper.append(Header(updated));
             wrapper.append(Perfil(updated));
             break;
         case 8:
+            wrapper.append(Header(updated));
             wrapper.append(TipDetail(updated));
             break;
     };
@@ -49,15 +54,14 @@ const render = (root) => {
       $('.collapsible').collapsible();
     }
 
-    if(state.pagina == 1 || state.pagina == 2 || state.pagina == 3){
+    if(state.pagina == 1 || state.pagina == 2 || state.pagina == 3 || state.pagina == 4 || state.pagina == 5 || state.pagina == 7){
       initMap();
     }
-
-    if(state.pagina == 5){
-        var input = document.getElementById("ubicacion");
-        new google.maps.places.Autocomplete(input);
-        timepicker();
-    }
+    // if(state.pagina == 5){
+    //     var input = document.getElementById("ubicacion");
+    //     new google.maps.places.Autocomplete(input);
+    //     timepicker();
+    // }
 
 }
 
@@ -198,109 +202,48 @@ const detalle = (tip) => {
 
 'use strict';
 const FormReport = (update) => {
-  
-  const cont_form =$('<section class="cont"></section>');
-  const row_1 =$('<div class="row"></div>');
-  const form  =$('<form class="col s10 form_new push-s1"></div>');
-  const row_2 =$('<div class="row"></div>');
-        row_1.append(form);
-        form.append(row_2);
-  const int_1 =$('<div class="input-field col s10"></div>');
-  const int_11=$('<i class="material-icons prefix">account_circle</i>');
-  const int_12=$('<input id="icon_prefix" type="text" class="validate dataMust">');
-  const int_13 =$('<label for="icon_prefix">Nombre</label>');
-  int_1.append(int_11,int_12,int_13) ;
-  const int_2 =$('<div class="input-field col s10">'+
-        '<i class="material-icons prefix">phone</i>'+
-        '<input id="icon_telephone" type="number"  maxlength="999999999"  class="validate">'+
-        '<label for="icon_telephone">Celular</label>'+
-        '</div>');
-  const int_3 =$('<div class="input-field col s10">'+
-          '  <i class="material-icons prefix">drafts</i>'+
-          '  <input id="email" type="email" class="validate">'+
-          '  <label for="email" data-error="wrong" data-success="right">Email</label>'+
-        '</div>');
-  const int_4 =$('<div class="input-field col s10"></div>');
-  const int_41 =$('<i class="material-icons prefix">location_city</i>');
-  const int_42 = $('<input id="ubicacion" type="text" placeholder = "" class="validate dataMust">');
-  const int_43 =$('<label for="ubicacion">Ubicación</label>');
-  int_4.append(int_41,int_42,int_43);
+  const parent = $('<div class="container"></div>');
+  const row = $('<div class="row bg_green_ligth"></div>');
+  const btnReturn = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
+  const divTitle = $('<div class="center-align col s6 recicla"><h5>Selecionar la ruta o punto a reportar</h5></div>');
+  const btnAdd = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large actions">+</a></div>');
+  const container = $('<div class="center-align col s12 cont_optciones"></div>');
+  const mapa = $('<div id="mapa" class="col s12"></div>');
+  const labelRuta = $('<label class="col s2" >Ruta</label>');
+  const inputRuta = $('<input name="group1" type="radio" value="Ruta"/>');
+  labelRuta.append(inputRuta);
+  const labelPoint = $('<label class="col s2" >Punto</label>');
+  const inputPoint = $('<input name="group1" type="radio" value="Punto"/>');
+  const divInput = $('<div class="col s12"></div>');
+  labelPoint.append(inputPoint);
+  divInput.append(labelPoint, labelRuta);
 
-  const int_5 =$('<div class="col s10"><h6>Horario de Recepción</h6></div>'+
-        '<div class="col s12">'+
-        '<p class="inline"><input type="checkbox" class="filled-in dataMust" id="dia1"/><label for="dia1">L</label></p>'+
-        '<p class="inline"><input type="checkbox" class="filled-in" id="dia2" /><label for="dia2">M</label></p>'+
-        '<p class="inline"><input type="checkbox" class="filled-in" id="dia3" /><label for="dia3">Mi</label></p>'+
-        '<p class="inline"><input type="checkbox" class="filled-in" id="dia4"/><label for="dia4">J</label></p>'+
-        '</div>');
-const int_6 =$('<div class="col s10">'+
-        '<p class="inline"><input type="checkbox" class="filled-in" id="dia5" /><label for="dia5">V</label></p>'+
-        '<p class="inline"><input type="checkbox" class="filled-in" id="dia6" /><label for="dia6">S</label></p>'+
-        '<p class="inline"><input type="checkbox" class="filled-in" id="dia7" /><label for="dia7">D</label></p>'+
-        '</div>');
-const int_7 =$('<div class="input-field col s5">'+
-          '  <i class="material-icons prefix">event</i>'+
-          '  <input type="text" class="timepicker dataMust">'+
-          '  <label for="icon_event" class="active">Inicio</label>'+
-        '</div>');
-const int_8 =$('<div class="input-field col s5">'+
-          '  <i class="material-icons prefix">event</i>'+
-          '  <input type="text" class="timepicker dataMust">'+
-          '  <label for="icon_event" class="active">Fin</label>'+
-        '</div>');
-const int_9 =$('<div class="col s10"><h6>Materiales</h6></div>');
-const int_s1 =$('<div class="col s5">'+
-                '<p><input type="checkbox" class="filled-in dataMust" id="in1"/><label for="in1">Plástico</label></p>'+
-                '<p><input type="checkbox" class="filled-in" id="in2" /><label for="in2">Ropa</label></p>'+
-                '<p><input type="checkbox" class="filled-in" id="in3" /><label for="in3">Vidrio</label></p>'+
-              '</div>');
-const int_s2 =$('<div class="col s5">'+
-                  '<p><input type="checkbox" class="filled-in" id="in4"/><label for="in4">Pilas</label></p>'+
-                  '<p><input type="checkbox" class="filled-in" id="in5"/><label for="in5">Aceite</label></p>'+
-                  '<p><input type="checkbox" class="filled-in" id="in6" /><label for="in6">Papel y Carton</label></p>'+
-                '</div>');
-const int_s3 =$('<div class="input-field col s12">'+
-            '<textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>'+
-            '<label for="textarea1">Observación</label>'+
-         '</div>');
- row_2.append(int_1,int_2,int_3,int_4,int_5,int_6,int_7,int_8,int_9,int_s1,int_s2,int_s3);
-
-  const btn_send =$('<button class="btn waves-effect waves-light" type="submit" name="action">Enviar<i class="material-icons right">send</i></button>');
-  const btnReturn = $('<div class=""><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
-
-  form.append(btn_send);
-  row_1.append(btnReturn);
-
-  cont_form.append(row_1);
-
-
-  btn_send.on('click', (e) =>{
-    e.preventDefault();
-     state.pagina = 5;
-     update();
-  });
+  state.locations = state.chasqui.family;
 
   btnReturn.on("click", (e) => {
     e.preventDefault();
-    state.pagina = null;
-
+    state.pagina = 1;
+    state.material = null;
+    state.locations = null;
     updated();
   });
 
-  return cont_form;
-};
-function timepicker () {
-    $('.timepicker').pickatime({
-    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
-    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
-    twelvehour: false, // Use AM/PM or 24-hour format
-    donetext: 'OK', // text for done-button
-    cleartext: 'Clear', // text for clear-button
-    canceltext: 'Cancel', // Text for cancel-button
-    autoclose: false, // automatic close timepicker
-    ampmclickable: true, // make AM PM clickable
-    aftershow: function(){} //Function for after opening timepicker
+  btnAdd.on("click", (e) => {
+    e.preventDefault();
+    state.pagina = 4;
+    updated();
   });
+
+  parent.append(mapa);
+  row.append(btnReturn, divTitle, btnAdd);
+
+  row.append(container);
+  parent.append(row);
+  // parent.append(divInput);
+  parent.append(mapa);
+  //
+  return parent;
+
 };
 
 "use strict";
@@ -494,9 +437,8 @@ function initMap () {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-
             const map = new google.maps.Map(document.getElementById("mapa"), {
-                zoom: 15,
+                zoom: 17,
                 center: pos
             });
 
@@ -504,7 +446,8 @@ function initMap () {
             var marker = new google.maps.Marker({
                 position: pos,
                 map: map,
-                icon: image
+                title: 'Click to zoom'
+                // icon: image
             });
 
             if(state.pagina == 2 ){
@@ -513,9 +456,8 @@ function initMap () {
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
                     });
-
                     if( (location.latitud && location.longitud) == null){
-                        return console.log(' No se encontro la ubicación de ' + location.kin)
+                        return console.log(' No se encontro la ubicación de ' + location.kin);
                     }
                     const newMarker = new google.maps.Marker({
                         position: {lat: location.latitud, lng: location.longitud},
@@ -530,10 +472,24 @@ function initMap () {
                     return newMarker;
                 });
             }
-            if(state.pagina == 3 ) {
+
+            if (state.pagina == 3) {
                 marker.setMap(null);
                 calculateAndDisplayRoute(pos, map);
+            }
+            if (state.pagina == 5){
+                map.addListener('center_changed', function() {
+                // 3 seconds after the center of the map has changed, pan back to the
+                // marker.
+                window.setTimeout(function() {
+                    map.panTo(marker.getPosition());
+                }, 3000);
+                });
 
+                marker.addListener('click', function() {
+                map.setZoom(8);
+                map.setCenter(marker.getPosition());
+                });
             }
         });
     } else {
@@ -618,6 +574,7 @@ const Login = (updated) => {
 
     field.append(icon);
     field.append(input);
+
     field.append(label);
 
     const btnSignIn = $('<div class="recicla"><a class="waves-effect waves-light red btn-large actions">Ingresar</a></div><br>');
@@ -699,6 +656,83 @@ const MapaRecicla = (updated) => {
     return parent;
 }
 
+const Perfil = (updated) => {
+    console.log(state);
+    const parent = $('<div class="container"></div>');
+    const row = $('<div class="row bg_green_ligth"></div>');
+    const divTitle = $('<div class="center-align col s12 recicla"><h5>Perfil</h5></div>');
+    const container = $('<div class="center-align col s12 cont_optciones"></div>');
+    const btnReturn = $('<div class="flex"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
+    const btnSave = $('<div class="flex"><a class="waves-effect waves-light btn-large actions">Guardar</a></div>');
+    const form  = $('<form action="#" class="col s12"></form>)');
+    const int_1 = $('<div class="input-field col s10"></div>');
+    const int_11 = $('<i  class="material-icons prefix">account_circle</i>');
+    const int_12 = $(`<input id="icon_prefix" type="text" class="validate dataMust" value="${state.chasqui.perfil.name}">`);
+    const int_13 = $('<label for="icon_prefix" class="active">Nombre</label>');
+    int_1.append(int_11,int_12,int_13) ;
+    const int_2 =$('<div class="input-field col s10"></div>');
+    const int_21=$('<i class="material-icons prefix">account_circle</i>');
+    const int_22=$(`<input id="icon_prefix" type="number" class="validate dataMust " value="${state.chasqui.perfil.phone}">`);
+    const int_23 =$('<label for="icon_prefix" class="active">Teléfono</label>');
+    int_2.append(int_21,int_22,int_23);
+    const label_radio = ('<label for="icon_prefix" class="active">Estado</label>');
+    form.append(label_radio);
+    const mapa = $('<div id="mapa" class="col s12"></div>');
+
+
+    ['A Salvo', 'Fuera de Peligro', 'Necesito ayuda'].map( item => {
+        const p = $('<p></p>');
+        const label = $('<label></label>');
+        const status = state.chasqui.perfil.status;
+        const input = $('<input class="with-gap" name="group1" type="radio" />');
+        if (item == state) {
+            input.attr("checked", true);
+        }
+        const span = $(`<span>${item}</span>`);
+        label.append(input, span);
+        p.append(label);
+        form.append(p);
+    })
+
+    const divText = $('<div class="input-field col s12"></div>');
+    const textA = $(`<textarea id="textarea1" class="materialize-textarea">${state.chasqui.perfil.message}</textarea>`);
+    const label = $('<label for="textarea1" class="active">Textarea</label>');
+    divText.append(textA, label);
+
+    btnReturn.on("click", (e) => {
+        e.preventDefault();
+        state.pagina = 1;
+        updated();
+    })
+
+    btnSave.on("click", (e) => {
+        e.preventDefault();
+
+        var database = firebase.database();
+        var referencia = database.ref('perfil/');
+        
+
+        referencia.set({
+            name: int_12.val(),
+            phone: int_22.val(),
+            message: textA.val(),
+        });
+    
+        state.pagina = 1;
+        updated();
+    })
+
+    row.append(btnReturn);
+    row.append(divTitle);
+    row.append(int_1, int_2, form, divText);
+    row.append(container);
+    parent.append(row);
+    parent.append(btnSave);
+
+    return parent;
+}
+
+
 "use strict";
 
 const Recicla = (updated) => {
@@ -719,6 +753,7 @@ const Recicla = (updated) => {
     parent.append(mapa);
     parent.append(btnReturn);
 
+    
     return parent;
 };
 
@@ -789,58 +824,6 @@ const Message = (update) => {
       update();}, 5000);
 
   return divCont_end;
-}
-
-const Perfil = (updated) => {
-
-    const tiposT = [ { name: "Plastico", img: "icon-bowling-pins" },
-                    { name: "Vidrio", img: "icon-wine" },
-                    { name: "RAEE", img: "icon-megaphone" },
-                    { name: "Aceite", img: "icon-caution" },
-                    { name: "Cartón y Papel", img: "icon-box2" },
-                    { name: "Pilas", img: "icon-battery2" }];
-
-                    const parent = $('<div class="container"></div>');
-                    const row = $('<div class="row bg_green_ligth"></div>');
-                    const divTitle = $('<div class="center-align col s12 recicla"><h5>Tips</h5></div>');
-                    const container = $('<div class="center-align col s12 cont_optciones"></div>');
-                    const btnReturn = $('<div class="flex"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
-
-    tiposT.forEach(function(type){
-      const divContent = $('<div class="col s6" data-id = "'+ type.name + '"></div>');
-      const img = $('<a class=""><i class="'+type.img+'"></i></a>');
-      const h5 = $('<h6 class="morado">'+ type.name + '</h6>');
-
-        divContent.append(img);
-        divContent.append(h5);
-        container.append(divContent);
-
-        divContent.on("click", (e) => {
-            e.preventDefault();
-            state.material = $(e.currentTarget).data("id").toLowerCase();;
-            console.log(state.material);
-            state.locations = filterByMaterial(state.material);
-            console.log(state.locations);
-            state.pagina = 7;
-            updated();
-        });
-    });
-
-
-    btnReturn.on("click", (e) => {
-        e.preventDefault();
-        state.pagina = null;
-        state.material = null;
-        state.locations = null;
-        updated();
-    })
-
-    row.append(divTitle);
-    row.append(container);
-    parent.append(row);
-    parent.append(btnReturn);
-
-    return parent;
 }
 
 
