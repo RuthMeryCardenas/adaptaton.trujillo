@@ -19,8 +19,8 @@ function initMap () {
                 zoom: 17,
                 center: pos
             });
-        
-            var image = 'https://wiki.waze.com/wiki/images/f/f1/LOL-female%402x.png';
+
+            var image = 'https://user-images.githubusercontent.com/25912796/39406946-51ede3c8-4b84-11e8-949d-0de4cd97d340.png';
             var marker = new google.maps.Marker({
                 position: pos,
                 map: map,
@@ -40,7 +40,7 @@ function initMap () {
                     const newMarker = new google.maps.Marker({
                         position: {lat: location.latitud, lng: location.longitud},
                         map:map,
-                        icon: location.url
+                        icon: location.avatar
                     })
                     newMarker.addListener("click", function(){
                         infowindow.open(map, newMarker);
@@ -69,7 +69,6 @@ function initMap () {
                 map.setCenter(marker.getPosition());
                 });
             }
-
         });
     } else {
         // Browser doesn't support Geolocation

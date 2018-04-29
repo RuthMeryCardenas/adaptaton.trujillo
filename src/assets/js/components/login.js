@@ -13,7 +13,6 @@ const Input = () => {
 }
 
 const Login = (updated) => {
-
     const parent = $('<div class="center-align fondo"></div>');
     const field = $('<div class="input-field"></div>');
     const icon = $('<i class="material-icons prefix">account_circle</i>');
@@ -24,7 +23,7 @@ const Login = (updated) => {
     field.append(input);
     field.append(label);
 
-    const btnSignIn = $('<div class="recicla"><a class="waves-effect waves-light btn-large actions"><i class="icon-lightbulb"></i>Ingresar</a></div><br>');
+    const btnSignIn = $('<div class="recicla"><a class="waves-effect waves-light red btn-large actions">Ingresar</a></div><br>');
 
     parent.append(field);
     parent.append(btnSignIn);
@@ -36,7 +35,7 @@ const Login = (updated) => {
         if (findUser(user).length > 0) {
           state.user = findUser(user)[0];
           state.pagina = 1;
-          console.log(state.user);
+          console.log("Usuario registrado");
         } else {
           console.log("Usuario no registrado");
         }

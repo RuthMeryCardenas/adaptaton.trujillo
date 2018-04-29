@@ -8,17 +8,20 @@ const render = (root) => {
 
     switch (state.pagina) {
         case null:
+            wrapper.append($('<div class="logo"></div>'));
             wrapper.append(Login(updated));
             break;
         case 1:
             wrapper.append(Header(updated));
-            wrapper.append(Home(updated));
-            break;
-        case 2:
             wrapper.append(Recicla(updated));
             break;
-        case 3:
+        case 2:
+            wrapper.append(Header(updated));
             wrapper.append(MapaRecicla(updated));
+            break;
+        case 3:
+            wrapper.append(Header(updated));
+            wrapper.append(RutaRecicla(updated));
             break;
         case 4:
             wrapper.append(addNewUser(updated));
