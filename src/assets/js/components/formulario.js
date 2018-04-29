@@ -2,7 +2,7 @@
 const FormReport = (update) => {
   const parent = $('<div class="container"></div>');
   const row = $('<div class="row bg_green_ligth"></div>');
-  const btnReturn = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large actions">Volver</a></div>');
+  const btnReturn = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect  red waves-light btn-large actions">Volver</a></div>');
   const divTitle = $('<div class="center-align col s6 recicla"><h5>Selecionar la ruta o punto a reportar</h5></div>');
   const btnAdd = $('<div class="bg_green_ligth1 col s3"><a class="waves-effect waves-light btn-large actions">+</a></div>');
   const container = $('<div class="center-align col s12 cont_optciones"></div>');
