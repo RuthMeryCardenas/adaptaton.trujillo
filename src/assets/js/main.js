@@ -49,7 +49,7 @@ const render = (root) => {
       $('.collapsible').collapsible();
     }
 
-    if(state.pagina == 2 ||state.pagina == 3 || state.pagina == 4 || state.pagina == 5 || state.pagina == 7){
+    if(state.pagina == 1 || state.pagina == 2 || state.pagina == 3 || state.pagina == 4 || state.pagina == 5 || state.pagina == 7){
       initMap();
     }
     // if(state.pagina == 5){
