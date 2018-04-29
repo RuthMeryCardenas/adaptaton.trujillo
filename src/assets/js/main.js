@@ -8,17 +8,20 @@ const render = (root) => {
 
     switch (state.pagina) {
         case null:
+            wrapper.append($('<div class="logo"></div>'));
             wrapper.append(Login(updated));
             break;
         case 1:
             wrapper.append(Header(updated));
-            wrapper.append(Home(updated));
-            break;
-        case 2:
             wrapper.append(Recicla(updated));
             break;
-        case 3:
+        case 2:
+            wrapper.append(Header(updated));
             wrapper.append(MapaRecicla(updated));
+            break;
+        case 3:
+            wrapper.append(Header(updated));
+            wrapper.append(RutaRecicla(updated));
             break;
         case 4:
             wrapper.append(addNewUser(updated));
@@ -46,9 +49,10 @@ const render = (root) => {
       $('.collapsible').collapsible();
     }
 
-    if(state.pagina == 2 ||state.pagina == 3 || state.pagina == 4 ){
+    if(state.pagina == 1 || state.pagina == 2 || state.pagina == 3){
       initMap();
     }
+
     if(state.pagina == 5){
         var input = document.getElementById("ubicacion");
         new google.maps.places.Autocomplete(input);

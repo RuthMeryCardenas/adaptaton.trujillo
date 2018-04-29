@@ -1,5 +1,30 @@
 "use strict";
 
+const ItemFamiliares = () => {
+  const li = $('<li></li>');
+  const header = $('<div class="collapsible-header"><i class="material-icons">people</i>Familiares</div>');
+  const body = $('<div class="collapsible-body"></div>');
+  const ul = $('<ul></ul>');
+  const subItem1 = $('<li><a href="#!"><i class="material-icons">location_on</i>Ubicar</a></li>');
+  const subItem2 = $('<li><a href="#!"><i class="material-icons">add</i>Agregar</a></li>');
+
+  subItem1.on("click", (e) => {
+      e.preventDefault();
+      console.log("ver ubicacion");
+      state.pagina = 2;
+      updated();
+  });
+
+  ul.append(subItem1);
+  ul.append(subItem2);
+  body.append(ul);
+
+  li.append(header);
+  li.append(body);
+
+  return li;
+}
+
 const Item = (item, icon, content) => {
   const li = $('<li></li>');
   const header = $('<div class="collapsible-header"><i class="material-icons">' + icon + '</i>' + item +'</div>');
@@ -36,11 +61,13 @@ const NavbarDesktop = () => {
 const NavbarMobile = () => {
   const container = $('<div id="slide-out" class="side-nav"></div>');
   const ul = $('<ul class="collapsible" data-collapsible="accordion"></ul>');
+  const item2 = $(Item("Mi estado", "accessibility", "Lorem ipsum dolor sit amet."));
+  const item3 = $(Item("Alertas", "add_alert", "Lorem ipsum dolor sit amet."));
 
-   ul.append(Item("Familiares", "people", "Lorem ipsum dolor sit amet."));
-   ul.append(Item("Mi estado", "accessibility", "Lorem ipsum dolor sit amet."));
-   ul.append(Item("Alertas", "add_alert", "Lorem ipsum dolor sit amet."));
-   container.append(ul);
+ ul.append(ItemFamiliares);
+ ul.append(item2);
+ ul.append(item3);
+ container.append(ul);
 
   return container;
 }

@@ -18,7 +18,7 @@ const store = {
 
 const filterByMaterial = (key) => {
   console.log('state.chasqui.family--->', state.chasqui.family.family);
-    return state.chasqui.family.family.filter( (item) => {
+    return state.chasqui.family.family.filter(item => {
                 console.log('item-->' , item);
                 return item.kin.toLowerCase() == key;
             });

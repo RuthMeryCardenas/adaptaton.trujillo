@@ -2,23 +2,23 @@
   box-sizing: border-box; }
 
 body {
+  background-color: #f7f7f7;
   margin: 0;
   padding: 0; }
 
 .logo {
   width: 100%;
   height: 150px;
-  background-image: url("../img/shortcut.jpg");
+  background-image: url("../img/header.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  margin-top: 40px; }
+  background-position: center; }
 
 .fondo {
   width: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center; }
+  padding: 0 21px; }
+  .fondo .input-field {
+    margin-top: 3rem; }
 
 .actions {
   margin-top: 30px; }
@@ -26,9 +26,7 @@ body {
 div.recicla {
   margin-top: 20px; }
   div.recicla a {
-    background-color: #17311F;
     font-family: 'Josefin Sans', sans-serif;
-    border: 1px solid #D1EAAF;
     border-radius: 16px;
     font-size: 1.1rem; }
     div.recicla a i {
