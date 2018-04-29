@@ -2,10 +2,10 @@
 
 Aylludanos es una aplicación que ayuda a pobladores en casos de desastres naturales a localizar familiares y reportar zonas afectadas.
 
-![screens](docs/logo0.PNG)
+![screens](docs/logo0.png)
 
 ## Desarrollado para el Programa Global TICs para la Adaptación al cambio climático en cuidades (TIC-A)
-[TIC-A](http://adaptaton18.pe/)
+[TIC-A](http://adaptaton18.pe/).s
 
 ## producto de desarrollado por :
 
@@ -22,16 +22,16 @@ Aylludanos nace gracias una necesidad detectada por los pobladores de El Porveni
  Primero se realizó un acercamiento al problema planteado meadiante una **lluvia de ideas** realizada por todos los integrantes el equipo [Ver aquí](https://realtimeboard.com/app/board/o9J_kz6g-dw=/l)
 ## Benchmark
 
- ![foto1](Benchmark.png)
+ ![foto1](docs/Benchmark.png)
 
-## Conociedo màs sobre el usuario final
+## Conociedo más sobre el usuario final
 
 Se realizó un modelo que representa a nuestro usuario final
-![foto1](docs/user.jpg)
+![foto1](docs/user.png)
 
 ## Priorización de funciones
 
-Se realizó un lista de los funciones principapes de nuestra aplicación :
+Se realizó un lista de los funciones principales de nuestra aplicación :
 
  * Registro de usuario con DNI
  * Registro de lista de familiares
